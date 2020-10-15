@@ -27,7 +27,6 @@
 | user            | references | null: false,foreign_key:true |
 | name            | string     | null: false                  |
 | description     | text       | null: false                  |
-| images_id       | integer    | null: false                  |
 | category_id     | integer    | null: false                  |
 | condition_id    | integer    | null: false                  |
 | price           | integer    | null: false                  |
@@ -47,9 +46,7 @@
 | -------------- | ---------- | ------------------------------ |
 | user           | references | null: false, foreign_key: true |
 | item           | references | null: false, foreign_key: true |
-| card_number    | string     | null: false,                   |
-| card_period    | string     | null: false,                   |
-| security_code  | string     | null: false,                   |
+
 
 ### Association
 
