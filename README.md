@@ -59,7 +59,7 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| purchases      | references | null: false, foreign_key: true |
+| purchase       | references | null: false, foreign_key: true |
 | post_number    | string     | null: false                    |
 | prefectures_id | integer    | null: false,                   |
 | city           | string     | null: false,                   |
