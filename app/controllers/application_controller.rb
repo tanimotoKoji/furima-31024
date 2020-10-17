@@ -4,11 +4,13 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def basic_auth
-      authenticate_or_request_with_http_basic do |username, password|
-        username == 'tanimoto' && password == 'tanimoto1'
-      end
-    end
-
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'tanimoto' && password == 'tanimoto1'
+  end
+  end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_date])
+  end
+ 
 end
-
