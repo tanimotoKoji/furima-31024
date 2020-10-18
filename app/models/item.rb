@@ -7,11 +7,11 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   with_options presence: true do
-  validates :category,numericality: { other_than: 1 }
-  validates :condition,numericality: { other_than: 1 }
-  validates :handing_item,numericality: { other_than: 1 }
-  validates :postage,numericality: { other_than: 1 }
-  validates :prefecture,numericality: { other_than: 1 }
+  validates :category_id, numericality: { other_than: 1, message: "Category must be other than --"}
+  validates :condition_id, numericality: { other_than: 1, message: "Condition must be other than --"}
+  validates :handing_item_id, numericality: { other_than: 1, message: "Handing item must be other than --"}
+  validates :postage_id, numericality: { other_than: 1, message: "Postage must be other than --"}
+  validates :prefecture_id, numericality: { other_than: 0, message: "Prefecture must be other than --"}
   end
 
   belongs_to :user
@@ -20,12 +20,8 @@ class Item < ApplicationRecord
   with_options presence: true do
   validates :name
   validates :description
-  validates :category_id
-  validates :condition_id
-  validates :price
-  validates :postage_id
-  validates :prefectures_id
-  validates :handing_item_id
   validates :image
+  validates :price,numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
+  validates :price,format: {with: /\A[0-9]+\z/}
   end
 end
