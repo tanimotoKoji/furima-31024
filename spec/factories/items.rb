@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    #image {Faker::Lorem.sentence}
+    
     association :user 
     name                 { "tech" }
     description          { "お買い得です" }
