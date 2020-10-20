@@ -16,6 +16,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  has_many :purchases
 
   with_options presence: true do
   validates :name
