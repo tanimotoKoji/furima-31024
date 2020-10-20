@@ -7,11 +7,7 @@ Rails.application.routes.draw do
   end
   
   root to: "items#index"
-  get 'items', to: 'items#index'
-  post 'items', to: 'items#create'
-  
-  resources :items, only: [:new, :show, :create, :edit ,:update]
-  
+  resources :items, except:[:index]
 
 
 end
