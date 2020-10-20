@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'items', to: 'items#index'
   post 'items', to: 'items#create'
   
-  resources :items, only: [:new, :show, :create, :edit ,:update]
+  resources :items, only: [:new, :show, :create, :edit ,:update, :destroy]
   
 
 
