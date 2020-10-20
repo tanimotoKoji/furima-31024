@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   
   root to: "items#index"
   get 'items', to: 'items#index'
-  post 'items', to:'items#create'
+  post 'items', to: 'items#create'
+  
+  resources :items, only: [:new, :show, :create,]
+  resources :purchases, only: [:show]
 
-  resources :items
 
 end
