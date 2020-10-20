@@ -41,13 +41,13 @@ class ItemsController < ApplicationController
        :postage_id, :prefecture_id, :handing_item_id, :image).merge(user_id:current_user.id)
    end
 
-   def set_item
-    @item = Item.find(params[:id])
-   end
+  def set_item
+   @item = Item.find(params[:id])
+  end
 
-   def set_seller
-    unless user_signed_in? && current_user.id == @item.user_id
+  def set_seller
+   unless user_signed_in? && current_user.id == @item.user_id
     redirect_to root_path
-    end
+   end
   end
 end
