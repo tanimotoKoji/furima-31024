@@ -53,9 +53,10 @@ RSpec.describe UserPurchase, type: :model do
     expect(@user_purchase.errors.full_messages).to include("House number can't be blank")
   end
 
-  it "phone_numberが11桁の数字であれば登録できること" do
-    @user_purchase.phone_number = "12345678911"
-    expect(@user_purchase).to be_valid
+  it "phone_numberが11桁未満だと登録できない" do
+    @user_purchase.phone_number = "123456789"
+    @user_purchase.valid?
+    expect(@user_purchase.errors.full_messages).to include("Phone number is invalid")
   end
  
   it "phone_numberが空だと登録できない" do
