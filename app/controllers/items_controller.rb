@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.includes(:user).order("created_at DESC")
+    @purchases = Purchase.includes(:item)
   end
 
   def new
@@ -19,7 +20,6 @@ class ItemsController < ApplicationController
       render :new
   end
   end
-
 
   def update
     if @item.update(item_params)
