@@ -58,6 +58,12 @@ RSpec.describe UserPurchase, type: :model do
     @user_purchase.valid?
     expect(@user_purchase.errors.full_messages).to include("Phone number is invalid")
   end
+
+  it "phone_numberが12桁以上だと登録できない" do
+    @user_purchase.phone_number = "123456789123"
+    @user_purchase.valid?
+    expect(@user_purchase.errors.full_messages).to include("Phone number is invalid")
+  end
  
   it "phone_numberが空だと登録できない" do
     @user_purchase.phone_number = nil
@@ -69,5 +75,17 @@ RSpec.describe UserPurchase, type: :model do
     @user_purchase.phone_number = "-0000000000"
     @user_purchase.valid?
     expect(@user_purchase.errors.full_messages).to include("Phone number is invalid")
+  end
+
+  it "user_idが空だと購入できない" do
+    @user_purchase.user_id = ""
+    @user_purchase.valid?
+    expect(@user_purchase.errors.full_messages).to include("User can't be blank")
+  end
+
+  it "item_idが空だと購入できない" do
+    @user_purchase.item_id = ""
+    @user_purchase.valid?
+    expect(@user_purchase.errors.full_messages).to include("Item can't be blank")
   end
 end
