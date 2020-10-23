@@ -5,11 +5,12 @@ class PurchasesController < ApplicationController
   def index
     @user_purchase = UserPurchase.new
     @item = Item.find(params[:item_id])
-    if user_signed_in? && current_user.id == @item.user_id
+    
+    if @item.purchase.present?
       redirect_to root_path
-     end
+    end
   end
-
+  
   def create
     @user_purchase = UserPurchase.new(purchase_params)
     if @user_purchase.valid?
