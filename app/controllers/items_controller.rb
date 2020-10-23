@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
   end
 
-
   def update
     if @item.update(item_params)
       redirect_to action: :show
